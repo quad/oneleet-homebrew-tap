@@ -9,10 +9,8 @@ cask "oneleet-agent" do
 
   livecheck do
     url "https://downloads.oneleet.com/agent/macos/beta-mac.yml"
-    strategy :page_match do |page|
-      require "yaml"
-      data = YAML.safe_load(page)
-      data["version"]
+    strategy :yaml do |yaml|
+      yaml["version"]
     end
   end
 
