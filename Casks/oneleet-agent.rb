@@ -4,8 +4,8 @@ cask "oneleet-agent" do
 
   url "https://downloads.oneleet.com/agent/macos/Oneleet-#{version}.dmg"
   name "Oneleet"
-  desc "Oneleet Agent for macOS monitors your system for security and compliance"
-  homepage "https://www.oneleet.com"
+  desc "Monitors your system for security and compliance"
+  homepage "https://www.oneleet.com/"
 
   livecheck do
     url "https://downloads.oneleet.com/agent/macos/beta-mac.yml"
@@ -21,7 +21,5 @@ cask "oneleet-agent" do
 
   app "Oneleet.app"
 
-  zap trash: [
-    "~/Library/Application Support/Oneleet Agent",
-  ]
+  zap trash: "~/Library/Application Support/Oneleet Agent"
 end
