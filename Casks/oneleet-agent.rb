@@ -1,18 +1,16 @@
 cask "oneleet-agent" do
-  version "2.0.0-beta.17"
-  sha256 "bf31335d25f156f4a805c2f7b13b5e365ac68bcc40260953be6df18789bbae8e"
+  version "2.0.5"
+  sha256 "31d0ce848456685fa0493f3ae9dd0aecd802cb8cdafed2d769b62e02642b0a91"
 
   url "https://downloads.oneleet.com/agent/macos/Oneleet-#{version}.dmg"
   name "Oneleet"
-  desc "Oneleet Agent for macOS monitors your system for security and compliance"
-  homepage "https://www.oneleet.com"
+  desc "Monitors your system for security and compliance"
+  homepage "https://www.oneleet.com/"
 
   livecheck do
     url "https://downloads.oneleet.com/agent/macos/beta-mac.yml"
-    strategy :page_match do |page|
-      require "yaml"
-      data = YAML.safe_load(page)
-      data["version"]
+    strategy :yaml do |yaml|
+      yaml["version"]
     end
   end
 
@@ -21,7 +19,5 @@ cask "oneleet-agent" do
 
   app "Oneleet.app"
 
-  zap trash: [
-    "~/Library/Application Support/Oneleet Agent",
-  ]
+  zap trash: "~/Library/Application Support/Oneleet Agent"
 end
